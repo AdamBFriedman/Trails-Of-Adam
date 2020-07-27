@@ -5,24 +5,25 @@
         <title>Trails of Adam</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="/favicon.ico">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <canvas id="canvas"></canvas>
 
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-    <defs>
-        <filter id="goo">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9" result="goo" />
-            <feBlend in="SourceGraphic" in2="goo" />
-        </filter>
-    </defs>
-</svg>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9" result="goo" />
+                    <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+            </defs>
+        </svg>
 
-<article>
-  This generative art experiment is a combination of circles with no overlap algorithm and SVG filters. It's a mouse trail that follow users movement and switches to autopilot when there is no activity on canvas.
-</article>
+        <article>
+        This generative art experiment is a combination of circles with no overlap algorithm and SVG filters. It's a mouse trail that follow users movement and switches to autopilot when there is no activity on canvas.
+        </article>
         <script src="script.js"></script>
     </body>
 </html>
