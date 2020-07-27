@@ -71,3 +71,34 @@ class Particle {
 		mouse.autopilotAngle += 0.01;
 	}
 }
+
+function handleOverlap() {
+	let overlapping = false;
+	let protection = 500;
+	let counter = 0;
+
+	while (particles.length < numberOfParticles && counter < protection) {
+		let randomAngle = Math.random() * 2 * Math.PI;
+		let randomRadius = Math.random() * mouse.radius;
+		let particle = {
+			x: mouse.x + randomRadius * Math.cos(randomAngle),
+			y: mouse.y + randomRadius * Math.sin(randomAngle),
+			radius: Math.floor(Math.random() * 30) + 10,
+		};
+		overlapping = false;
+		for (let i = 0; i < particles.length; i++) {
+			let previousParticle = particles[i];
+			let dx = particle.x - previousParticle.x;
+			let dy = particle.y - previousParticle.y;
+			let distance = Math.sqrt(dx * dx + dy * dy);
+			if (distance < particle.radius + previousParticle.radius) {
+				overlapping = true;
+				break;
+			}
+		}
+		if (!overlapping) {
+			particles.unshift(new Particle(particle.x, particle.y, particle.radius));
+		}
+		counter++;
+	}
+}
