@@ -1,5 +1,5 @@
 // Variables
-const canvas = document.getElementById('canvas1');
+const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -119,3 +119,30 @@ function animate() {
 	requestAnimationFrame(animate);
 }
 animate();
+
+window.addEventListener('resize', function () {
+	particles = [];
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+	numberOfParticles = 100;
+	ctx.textBaseline = 'middle';
+	radius = window.innerWidth / 5;
+	handleOverlap();
+});
+
+let autopilot = setInterval(function () {
+	mouse.x = undefined;
+	mouse.y = undefined;
+}, 40);
+
+canvas.addEventListener('mouseleave', function () {
+	autopilot = setInterval(function () {
+		mouse.x = undefined;
+		mouse.y = undefined;
+	}, 40);
+});
+
+canvas.addEventListener('mouseenter', function () {
+	clearInterval(autopilot);
+	autopilot = undefined;
+});
