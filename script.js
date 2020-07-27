@@ -102,3 +102,20 @@ function handleOverlap() {
 		counter++;
 	}
 }
+
+function animate() {
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	for (let i = 0; i < particles.length; i++) {
+		particles[i].draw();
+		particles[i].update();
+	}
+	handleOverlap();
+	if (particles.length >= numberOfParticles) {
+		for (let i = 0; i < 3; i++) {
+			particles.pop();
+		}
+	}
+	hue += 2;
+	requestAnimationFrame(animate);
+}
+animate();
